@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "strict": true,
+
+        "target": "ESNext",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+
+        "rootDir": "./src",
+        "outDir": "./build",
+
+        "baseUrl": "./src",
+        "paths": {
+            
+        }
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"]
+}
