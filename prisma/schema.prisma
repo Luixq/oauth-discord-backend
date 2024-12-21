@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(cuid())
+  discordId      String   @unique
+  username       String
+  globalname     String?
+  discriminator  String
+  avatar         String? // O avatar pode ser nulo caso o usuário não tenha
+  email          String?  @unique // Pode ser opcional dependendo das permissões
+  verified       Boolean  @default(false)
+  locale         String?  @default("pt-BR")
+  mfa_enabled    Boolean  @default(false)
+  accessToken    String
+  refreshToken   String
+  tokenExpiresAt DateTime
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // Relacionamento com a sessão
+  sessions Session[]
+}
+
+model Session {
+  id               String   @id @default(uuid())
+  userId           String // Relaciona a sessão com o usuário
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessionExpiresAt DateTime
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
