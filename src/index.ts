@@ -8,7 +8,6 @@ import log from "consola";
 import chalk from "chalk";
 import { ZodError } from "zod";
 
-import "#/types/env.js";
 import { Session, User } from "@prisma/client";
 
 declare module "fastify" {
