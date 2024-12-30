@@ -29,7 +29,7 @@
 
 ---
 
-## 2. Frontend
+## 2. Frontend - não finalizado
 - ### Login
   - Botão para iniciar o fluxo OAuth2.
   - Redirecionamento para a API.
@@ -41,7 +41,7 @@
     - Sessão ativa.
 
 - ### Sessão
-  - Cookies ou localStorage para armazenar sessão.
+  - Cookies para armazenar sessão.
   - Atualização automática com o token de atualização.
 
 ---
